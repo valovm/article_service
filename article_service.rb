@@ -1,5 +1,6 @@
-class ArticleService
+# frozen_string_literal: true
 
+class ArticleService
   def build(articles, news, cols = 3)
     init articles, news, cols
     schema.transpose
@@ -19,7 +20,7 @@ class ArticleService
     a_pos = 0
     size = @articles.size + @news.size - 1
 
-    return (0..size).step(@cols).map do
+    (0..size).step(@cols).map do
       row = (0..@cols - 1).map do |i|
         type_material = i == a_pos ? :article : :new
         get_material type_material
